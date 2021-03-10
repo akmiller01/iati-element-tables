@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iati-organisations version="2.02" generated-datetime="2018-03-06T15:31:41+00:00">
+  <iati-organisation last-updated-datetime="2018-03-06T15:31:41+00:00" xml:lang="en" default-currency="GBP" xmlns:aidstream="http://example.org/aidstream/ns#">
+    <organisation-identifier>GB-COH-06368740</organisation-identifier>
+    <name>
+      <narrative xml:lang="en">Development Initiatives Poverty Research Limited</narrative>
+    </name>
+    <reporting-org type="21" ref="GB-COH-06368740">
+      <narrative xml:lang="en">Development Initiatives Poverty Research Limited</narrative>
+    </reporting-org>
+    <total-budget status="1">
+      <period-start iso-date="2018-01-01"/>
+      <period-end iso-date="2018-12-31"/>
+      <value currency="GBP" value-date="2018-01-01">5151748</value>
+    </total-budget>
+    <total-expenditure>
+      <period-start iso-date="2018-01-01"/>
+      <period-end iso-date="2018-12-31"/>
+      <value currency="GBP" value-date="2018-01-01">5094584</value>
+    </total-expenditure>
+    <document-link format="text/html" url="http://devinit.org/about/finances/">
+      <title>
+        <narrative xml:lang="en">Web link to financial data</narrative>
+      </title>
+      <category code="B06"/>
+      <document-date iso-date="2017-12-31"/>
+    </document-link>
+  </iati-organisation>
+</iati-organisations>
