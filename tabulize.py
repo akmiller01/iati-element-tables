@@ -157,6 +157,11 @@ REQUIRED_CHILDREN = [
     ("//iati-activity", "recipient-country"),
     ("//iati-activity", "recipient-region"),
     ("//iati-activity", "sector"),
+    ("//iati-activity", "tag"),
+    ("//iati-activity", "humanitarian-scope"),
+    ("//iati-activity", "default-flow-type"),
+    ("//iati-activity", "default-finance-type"),
+    ("//iati-activity", "default-aid-type"),
     ("//point", "pos"),
     ("//country-budget-items", "budget-item"),
     ("//budget", "period-start"),
@@ -173,6 +178,9 @@ REQUIRED_CHILDREN = [
     ("//transaction", "recipient-country"),
     ("//transaction", "recipient-region"),
     ("//transaction", "sector"),
+    ("//transaction", "flow-type"),
+    ("//transaction", "finance-type"),
+    ("//transaction", "aid-type"),
     ("//document-link", "title"),
     ("//document-link", "category"),
     ("//document-link", "language"),
@@ -195,6 +203,7 @@ REQUIRED_CHILDREN = [
     ("//comment", "narrative"),
 ]
 REQUIRED_ATTRIBUTES = [
+    ("//iati-activity", "humanitarian"),
     ("//document-link", "format"),
     ("//category", "code"),
     ("//language", "code"),
@@ -214,7 +223,20 @@ REQUIRED_ATTRIBUTES = [
     ("//recipient-region", "vocabulary"),
     ("//sector", "code"),
     ("//sector", "percentage"),
-    ("//sector", "vocabulary")
+    ("//sector", "vocabulary"),
+    ("//tag", "code"),
+    ("//tag", "vocabulary"),
+    ("//humanitarian-scope", "type"),
+    ("//humanitarian-scope", "vocabulary"),
+    ("//humanitarian-scope", "code"),
+    ("//default-flow-type", "code"),
+    ("//default-finance-type", "code"),
+    ("//default-aid-type", "code"),
+    ("//default-aid-type", "vocabulary"),
+    ("//flow-type", "code"),
+    ("//finance-type", "code"),
+    ("//aid-type", "code"),
+    ("//aid-type", "vocabulary"),
 ]
 
 
