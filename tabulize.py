@@ -1,7 +1,6 @@
 from lxml import etree
 from lxml.etree import XMLParser
 import pandas as pd
-from collections import OrderedDict
 
 
 XPATH_SEPERATOR = "/"
