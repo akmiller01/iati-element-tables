@@ -1,101 +1,101 @@
-filename,iati-activity/iati-identifier[1],iati-activity/location,iati-activity/location/location-reach[1],iati-activity/location/location-reach[1]@code,iati-activity/location/name[1],iati-activity/location/point[1],iati-activity/location/point[1]@srsName,iati-activity/location/exactness[1],iati-activity/location/exactness[1]@code
+filename,iati-activity/iati-identifier[1],iati-activity/location,iati-activity/location/location-reach[1],iati-activity/location/location-reach[1]@code,iati-activity/location/name[1],iati-activity/location/name[1]/narrative[1],iati-activity/location/point[1],iati-activity/location/point[1]@srsName,iati-activity/location/point[1]/pos[1],iati-activity/location/exactness[1],iati-activity/location/exactness[1]@code
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ","Koro, Mali","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.074780 -3.084944,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ","Kiri, Mali","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,13.9333333 -2.966666700000019,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ","Bih , Mali","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,13.916667 -2.933332999999948,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ","Kain, Burkina Faso","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.03944 -2.7603679999999713,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ","Yense, Burkina Faso","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,13.91336 -2.84306,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ","Thiou, Burkina Faso","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,13.802416 -2.656253,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ","Djibo, Burkina Faso","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.136442 -1.622794,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,
+        ","Ansongo, Mali","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,15.672749 0.502582,,
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ","Ouatagouna, Mali","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,15.194469 0.719221,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,
+        ","Fafa, Mali","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,15.322121 0.747340099999974,,
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ","Labbezanga, Mali","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.969783 0.704461,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ","Koutougou, Niger","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.95 0.7833329000000049,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ","Kongokiré , Niger","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.95383 0.7459472,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,
+        ","Ayorou, Niger","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.731922 0.911799,,
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ",Gorom-Gorom,"
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.445928 -0.233683,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ",Markoye,"
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.661966 0.032809,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ",Bom,"
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.48506 0.1109861,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,
+        ",Tokabangou,"
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.64156 0.1510472,,
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ","Bankilare , Niger","
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.582430 0.722043,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ",Dolbel,"
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.618286 0.283505,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ",Wanzarbé,"
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.74028 0.36154,,2
 drc-activities,DK-CVR-20699310-DU19527,"
       ",,,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,2
+        ",Amarsinge,"
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,14.35163 0.33127,,2
 drc-activities,DK-CVR-20699310-DF221251,"
       ",,1,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,
+        ",Tigray,"
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,13.703489515573008 38.74963760375976,,
 drc-activities,DK-CVR-20699310-DF221251,"
       ",,1,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,
+        ",Amhara,"
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,11.385717617169654 38.035526275634766,,
 drc-activities,DK-CVR-20699310-DF221251,"
       ",,1,"
-        ","
-        ",http://www.opengis.net/def/crs/EPSG/0/4326,,
+        ",Addis Ababa,"
+        ",http://www.opengis.net/def/crs/EPSG/0/4326,8.73519830522147 38.82740020751953,,

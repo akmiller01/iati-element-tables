@@ -9,26 +9,26 @@ from tabulize import melt_iati
 
 
 table_descriptions = [
-    ("activities.csv", "iati-activity"),
-    ("transactions.csv", "iati-activity/transaction"),
-    ("budgets.csv", "iati-activity/budget"),
-    ("planned_disbursements.csv", "iati-activity/planned-disbursement"),
-    ("participating_orgs.csv", "iati-activity/participating-org"),
-    ("transact_provider_orgs.csv", "iati-activity/transaction/provider-org"),
-    ("transact_receiver_orgs.csv", "iati-activity/transaction/receiver-org"),
-    ("activity_recipient_countrys.csv", "iati-activity/recipient-country"),
-    ("activity_recipient_regions.csv", "iati-activity/recipient-region"),
-    ("transact_recipient_countrys.csv", "iati-activity/transaction/recipient-country"),
-    ("transact_recipient_regions.csv", "iati-activity/transaction/recipient-region"),
-    ("locations.csv", "iati-activity/location"),
-    ("activity_sectors.csv", "iati-activity/sector"),
-    ("transaction_sectors.csv", "iati-activity/transaction/sector"),
-    ("tags.csv", "iati-activity/tag"),
-    ("policy_markers.csv", "iati-activity/policy-marker"),
-    ("humanitarian_scopes.csv", "iati-activity/humanitarian-scope"),
-    ("organisations.csv", "iati-organisation"),
-    ("organisation_total_budget.csv", "iati-organisation/total-budget"),
-    ("organisation_total_expenditure.csv", "iati-organisation/total-expenditure"),
+    ("activities.csv", "iati-activity", 1),
+    ("transactions.csv", "iati-activity/transaction", 10),
+    ("budgets.csv", "iati-activity/budget", 10),
+    ("planned_disbursements.csv", "iati-activity/planned-disbursement", 10),
+    ("participating_orgs.csv", "iati-activity/participating-org", 10),
+    ("transact_provider_orgs.csv", "iati-activity/transaction/provider-org", 10),
+    ("transact_receiver_orgs.csv", "iati-activity/transaction/receiver-org", 10),
+    ("activity_recipient_countrys.csv", "iati-activity/recipient-country", 10),
+    ("activity_recipient_regions.csv", "iati-activity/recipient-region", 10),
+    ("transact_recipient_countrys.csv", "iati-activity/transaction/recipient-country", 10),
+    ("transact_recipient_regions.csv", "iati-activity/transaction/recipient-region", 10),
+    ("locations.csv", "iati-activity/location", 10),
+    ("activity_sectors.csv", "iati-activity/sector", 10),
+    ("transaction_sectors.csv", "iati-activity/transaction/sector", 10),
+    ("tags.csv", "iati-activity/tag", 10),
+    ("policy_markers.csv", "iati-activity/policy-marker", 10),
+    ("humanitarian_scopes.csv", "iati-activity/humanitarian-scope", 10),
+    ("organisations.csv", "iati-organisation", 10),
+    ("organisation_total_budget.csv", "iati-organisation/total-budget", 10),
+    ("organisation_total_expenditure.csv", "iati-organisation/total-expenditure", 10),
 ]
 
 
@@ -56,8 +56,8 @@ if __name__ == "__main__":
     table_dict = dict()
     bar = progressbar.ProgressBar()
     for xml_file in bar(xml_files):
-        for table_name, xpath in table_descriptions:
-            extract = melt_iati(xml_file, xpath)
+        for table_name, xpath, max_depth in table_descriptions:
+            extract = melt_iati(xml_file, xpath, max_depth)
             if len(extract) > 0:
                 extract["filename"] = os.path.basename(xml_file)
                 if table_name in list(table_dict.keys()):
