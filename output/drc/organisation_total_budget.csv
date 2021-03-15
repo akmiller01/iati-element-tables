@@ -1,0 +1,7 @@
+filename,iati-activity/iati-identifier[1],iati-organisation/total-budget,iati-organisation/total-budget@status,iati-organisation/total-budget/period-start[1],iati-organisation/total-budget/period-start[1]@iso-date,iati-organisation/total-budget/period-end[1],iati-organisation/total-budget/period-end[1]@iso-date,iati-organisation/total-budget/value[1],iati-organisation/total-budget/value[1]@currency,iati-organisation/total-budget/value[1]@value-date
+drc-org,,"
+      ",1,,2017-01-01,,2017-12-31,207419000,DKK,2017-12-31
+drc-org,,"
+      ",1,,2018-01-01,,2018-12-31,393508000,DKK,2018-01-01
+drc-org,,"
+      ",1,,2019-01-01,,2019-12-31,318500000,,2020-08-19

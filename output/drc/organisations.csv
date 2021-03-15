@@ -1,0 +1,11 @@
+filename,iati-organisation,iati-organisation@default-currency,iati-organisation@last-updated-datetime,iati-organisation@{http://www.w3.org/XML/1998/namespace}lang,iati-activity/iati-identifier[1],iati-organisation/organisation-identifier[1],iati-organisation/name[1],iati-organisation/reporting-org[1],iati-organisation/reporting-org[1]@ref,iati-organisation/reporting-org[1]@type,iati-organisation/total-budget[1],iati-organisation/total-budget[1]@status,iati-organisation/total-budget[2],iati-organisation/total-budget[2]@status,iati-organisation/total-budget[3],iati-organisation/total-budget[3]@status,iati-organisation/document-link[1],iati-organisation/document-link[1]@format,iati-organisation/document-link[1]@url,iati-organisation/document-link[2],iati-organisation/document-link[2]@format,iati-organisation/document-link[2]@url,iati-organisation/document-link[3],iati-organisation/document-link[3]@format,iati-organisation/document-link[3]@url,iati-organisation/total-expenditure[1]
+drc-org,"
+    ",DKK,2021-02-01T21:20:31+00:00,en,,DK-CVR-20699310,"
+      ","
+      ",DK-CVR-20699310,21,"
+      ",1,"
+      ",1,"
+      ",1,"
+      ",text/plain,https://drc.ngo/media/4560347/annual-report-2017.pdf,"
+      ",application/pdf,https://drc.ngo/media/5342185/aarsrapport-2018-uk.pdf,"
+      ",application/pdf,https://drc.ngo/media/yrbb43mp/annual-report-2019_uk.pdf,

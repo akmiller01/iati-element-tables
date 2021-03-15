@@ -141,7 +141,45 @@ SORT_ORDER = {
     "loan-status/principal-arrears": 132,
     "loan-status/interest-arrears": 133,
     "iati-activity/fss": 134,
-    "fss/forecast": 135
+    "fss/forecast": 135,
+    "iati-organisations/iati-organisation": 136,
+    "iati-organisation/organisation-identifier": 137,
+    "iati-organisation/name": 138,
+    "iati-organisation/reporting-org": 139,
+    "iati-organisation/total-budget": 140,
+    "total-budget/period-start": 141,
+    "total-budget/period-end": 142,
+    "total-budget/value": 143,
+    "total-budget/budget-line": 144,
+    "budget-line/value": 145,
+    "budget-line/narrative": 146,
+    "iati-organisation/recipient-org-budget": 147,
+    "recipient-org-budget/recipient-org": 148,
+    "recipient-org/narrative": 149,
+    "recipient-org-budget/period-start": 150,
+    "recipient-org-budget/period-end": 151,
+    "recipient-org-budget/value": 152,
+    "recipient-org-budget/budget-line": 153,
+    "iati-organisation/recipient-region-budget": 154,
+    "recipient-region-budget/recipient-region": 155,
+    "recipient-region-budget/period-start": 156,
+    "recipient-region-budget/period-end": 157,
+    "recipient-region-budget/value": 158,
+    "recipient-region-budget/budget-line": 159,
+    "iati-organisation/recipient-country-budget": 160,
+    "recipient-country-budget/recipient-country": 161,
+    "recipient-country-budget/period-start": 162,
+    "recipient-country-budget/period-end": 163,
+    "recipient-country-budget/value": 164,
+    "recipient-country-budget/budget-line": 165,
+    "total-expenditure/period-start": 166,
+    "total-expenditure/period-end": 167,
+    "total-expenditure/value": 168,
+    "total-expenditure/expense-line": 169,
+    "expense-line/value": 170,
+    "expense-line/narrative": 171,
+    "iati-organisation/document-link": 172,
+    "document-link/recipient-country": 173,
 }
 REQUIRED_CHILDREN = [
     ("//iati-activities", "iati-activity"),
@@ -154,10 +192,12 @@ REQUIRED_CHILDREN = [
     ("//iati-activity", "activity-date"),
     ("//iati-activity", "transaction"),
     ("//iati-activity", "budget"),
+    ("//iati-activity", "planned-disbursement"),
     ("//iati-activity", "recipient-country"),
     ("//iati-activity", "recipient-region"),
     ("//iati-activity", "sector"),
     ("//iati-activity", "tag"),
+    ("//iati-activity", "policy-marker"),
     ("//iati-activity", "humanitarian-scope"),
     ("//iati-activity", "default-flow-type"),
     ("//iati-activity", "default-finance-type"),
@@ -201,6 +241,8 @@ REQUIRED_CHILDREN = [
     ("//activity-description", "narrative"),
     ("//condition", "narrative"),
     ("//comment", "narrative"),
+    ("//iati-organisation", "total-budget"),
+    ("//iati-organisation", "total-expenditure")
 ]
 REQUIRED_ATTRIBUTES = [
     ("//iati-activity", "humanitarian"),
@@ -242,7 +284,10 @@ REQUIRED_ATTRIBUTES = [
 
 def iati_order(xml_element):
     family_tag = "{}{}{}".format(xml_element.getparent().tag, XPATH_SEPERATOR, xml_element.tag)
-    return SORT_ORDER[family_tag]
+    try:
+        return SORT_ORDER[family_tag]
+    except KeyError:
+        return 999
 
 
 def iati_order_xpath(xpath_key):
@@ -254,7 +299,10 @@ def iati_order_xpath(xpath_key):
             elem_tag = xpath_split[i]
             parent_tag = xpath_split[i-1]
             family_tag = "{}{}{}".format(parent_tag, XPATH_SEPERATOR, elem_tag)
-            sort_orders.append(SORT_ORDER[family_tag])
+            try:
+                sort_orders.append(SORT_ORDER[family_tag])
+            except KeyError:
+                sort_orders.append(999)
     return sort_orders, xpath_key
 
 
@@ -262,6 +310,12 @@ def remove_xpath_index(relative_xpath):
     split_path = relative_xpath.split("[")
     indexless_path = "[".join(split_path[:-1])
     return indexless_path
+
+
+def fetch_xpath_number(absolute_xpath):
+    split_path = absolute_xpath.split("[")
+    path_index = int(split_path[-1][:-1])
+    return path_index
 
 
 def increment_xpath(absolute_xpath):
@@ -273,21 +327,23 @@ def increment_xpath(absolute_xpath):
     return incremented_xpath
 
 
-def find_identifier(element):
+def find_identifier(element, root):
     parent = element
     while parent.tag != 'iati-activity':
-        if parent.tag == 'iati-activities':
+        if parent == root:
             return ""
         parent = parent.getparent()
     identifier = parent.xpath('iati-identifier/text()')
     return identifier[0] if identifier else ""
 
 
-def recursive_tree_traversal(element, absolute_xpath, element_dictionary):
+def recursive_tree_traversal(element, absolute_xpath, element_dictionary, max_depth, depth, max_siblings):
     # Main value
     element_value = str(element.text) if element.text else ""
     while absolute_xpath in element_dictionary:
         absolute_xpath = increment_xpath(absolute_xpath)
+        if fetch_xpath_number(absolute_xpath) > max_siblings:
+            return element_dictionary
 
     element_dictionary[absolute_xpath] = element_value
 
@@ -300,18 +356,19 @@ def recursive_tree_traversal(element, absolute_xpath, element_dictionary):
 
     # Child values
     element_children = element.getchildren()
-    if not element_children:
+    if not element_children or depth == max_depth:
         return element_dictionary
     else:
         for child_elem in element_children:
+            child_depth = depth + 1
             child_elem_tag = child_elem.tag
             child_absolute_xpath = XPATH_SEPERATOR.join([absolute_xpath, child_elem_tag]) + "[1]"
-            element_dictionary = recursive_tree_traversal(child_elem, child_absolute_xpath, element_dictionary)
+            element_dictionary = recursive_tree_traversal(child_elem, child_absolute_xpath, element_dictionary, max_depth, child_depth, max_siblings)
 
     return element_dictionary
 
 
-def melt_iati(xml_filename, extract_xpath):
+def melt_iati(xml_filename, extract_xpath, max_depth=1, max_siblings=10):
     large_parser = XMLParser(huge_tree=True)
 
     parser = etree.XMLParser(remove_blank_text=True)
@@ -338,22 +395,17 @@ def melt_iati(xml_filename, extract_xpath):
             if attrib_key not in matching_parent.attrib:
                 matching_parent.attrib[attrib_key] = ""
 
-    root =  tree.getroot()
+    root = tree.getroot()
     extracts = root.xpath(extract_xpath)
     extracts_list = []
     for extract in extracts:
+        depth = 0
         extract_dict = dict()
         if extract_xpath != "iati-activity":
-            extract_dict["iati-activity/iati-identifier[1]"] = find_identifier(extract)
-        extract_dict = recursive_tree_traversal(extract, extract_xpath, extract_dict)
+            extract_dict["iati-activity/iati-identifier[1]"] = find_identifier(extract, root)
+        extract_dict = recursive_tree_traversal(extract, extract_xpath, extract_dict, max_depth, depth, max_siblings)
         extracts_list.append(extract_dict)
 
     e_df = pd.DataFrame(extracts_list, dtype=str)
     e_df = e_df.reindex(sorted(e_df.columns, key=iati_order_xpath), axis=1)
     return e_df
-
-
-
-if __name__ == "__main__":
-    extract = melt_iati("test_data/dipr/Latest_IATI_-_data.xml", "iati-activity/transaction/provider-org")
-    extract.to_csv("test_data/dipr.csv", index=False)
