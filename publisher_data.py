@@ -1,8 +1,10 @@
 import argparse
+import json
 import glob
 import os
 import progressbar
 import pandas as pd
+import requests
 from tabulize import melt_iati
 
 
@@ -30,6 +32,11 @@ table_descriptions = [
 ]
 
 
+validator_url = "http://stage.iativalidator.iatistandard.org/api/v1/stats?date=2020-12-31"
+all_validation = json.loads(requests.get(validator_url).content)
+
+
+
 if __name__ == "__main__":
     arg_parser = argparse.ArgumentParser(description='Create publisher metadata')
     arg_parser.add_argument('publisher', type=str, help='Publisher\'s ID from the IATI Registry')
@@ -37,6 +44,13 @@ if __name__ == "__main__":
     output_dir = os.path.join("output", args.publisher)
     if not os.path.isdir(output_dir):
         os.makedirs(output_dir)
+    pub_validation = [val for val in all_validation if val['publisher'] == args.publisher]
+    summary_validation = pd.io.json.json_normalize(pub_validation[0]["summaryStats"])
+    summary_validation.to_csv(os.path.join(output_dir,"validation_summary.csv"), index=False)
+    message_validation = pd.io.json.json_normalize(pub_validation[0]["messageStats"])
+    message_validation.to_csv(os.path.join(output_dir,"validation_message.csv"), index=False)
+    activity_validation = pd.io.json.json_normalize(pub_validation[0]["activityStats"])
+    activity_validation.to_csv(os.path.join(output_dir,"validation_activity.csv"), index=False)
     xml_path = os.path.join("/home/alex/git/IATI-Registry-Refresher/data", args.publisher, '*')
     xml_files = glob.glob(xml_path)
     table_dict = dict()
