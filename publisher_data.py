@@ -65,7 +65,7 @@ if __name__ == "__main__":
                 else:
                     table_dict[table_name] = [extract]
     for table_name in list(table_dict.keys()):
-        total = pd.concat(table_dict[table_name])
+        total = pd.concat(table_dict[table_name], sort=False)
         cols = list(total)
         cols.insert(0, cols.pop(cols.index('filename')))
         total = total.loc[:, cols]
