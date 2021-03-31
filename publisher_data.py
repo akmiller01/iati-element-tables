@@ -6,6 +6,7 @@ import progressbar
 import pandas as pd
 import requests
 from tabulize import melt_iati
+from lxml import etree
 
 
 table_descriptions = [
@@ -57,7 +58,10 @@ if __name__ == "__main__":
     bar = progressbar.ProgressBar()
     for xml_file in bar(xml_files):
         for table_name, xpath, max_depth in table_descriptions:
-            extract = melt_iati(xml_file, xpath, max_depth)
+            try:
+                extract = melt_iati(xml_file, xpath, max_depth)
+            except etree.XMLSyntaxError:
+                continue
             if len(extract) > 0:
                 extract["filename"] = os.path.basename(xml_file)
                 if table_name in list(table_dict.keys()):
