@@ -3,6 +3,26 @@ from lxml.etree import XMLParser
 import pandas as pd
 
 
+def destroy_tree(tree):
+    root = tree.getroot()
+
+    node_tracker = {root: [0, None]}
+
+    for node in root.iterdescendants():
+        parent = node.getparent()
+        node_tracker[node] = [node_tracker[parent][0] + 1, parent]
+
+    node_tracker = sorted([(depth, parent, child) for child, (depth, parent)
+                           in node_tracker.items()], key=lambda x: x[0], reverse=True)
+
+    for _, parent, child in node_tracker:
+        if parent is None:
+            break
+        parent.remove(child)
+
+    del tree
+
+
 XPATH_SEPERATOR = "/"
 ATTRIB_SEPERATOR = "@"
 SORT_ORDER = {
@@ -408,4 +428,5 @@ def melt_iati(xml_filename, extract_xpath, max_depth=1, max_siblings=10):
 
     e_df = pd.DataFrame(extracts_list, dtype=str)
     e_df = e_df.reindex(sorted(e_df.columns, key=iati_order_xpath), axis=1)
+    destroy_tree(tree)
     return e_df
