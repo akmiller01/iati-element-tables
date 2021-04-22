@@ -33,7 +33,7 @@ table_descriptions = [
 ]
 
 
-validator_url = "http://stage.iativalidator.iatistandard.org/api/v1/stats?date=2020-12-31"
+validator_url = "http://stage.iativalidator.iatistandard.org/api/v1/stats?date=2021-04-19"
 all_validation = json.loads(requests.get(validator_url).content)
 
 
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     arg_parser = argparse.ArgumentParser(description='Create publisher metadata')
     arg_parser.add_argument('publisher', type=str, help='Publisher\'s ID from the IATI Registry')
     args = arg_parser.parse_args()
-    output_dir = os.path.join("output", args.publisher)
+    output_dir = os.path.join("un_output", args.publisher)
     if not os.path.isdir(output_dir):
         os.makedirs(output_dir)
     pub_validation = [val for val in all_validation if val['publisher'] == args.publisher]
