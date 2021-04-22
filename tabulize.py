@@ -382,8 +382,9 @@ def recursive_tree_traversal(element, absolute_xpath, element_dictionary, max_de
         for child_elem in element_children:
             child_depth = depth + 1
             child_elem_tag = child_elem.tag
-            child_absolute_xpath = XPATH_SEPERATOR.join([absolute_xpath, child_elem_tag]) + "[1]"
-            element_dictionary = recursive_tree_traversal(child_elem, child_absolute_xpath, element_dictionary, max_depth, child_depth, max_siblings)
+            if isinstance(child_elem_tag, str):
+                child_absolute_xpath = XPATH_SEPERATOR.join([absolute_xpath, child_elem_tag]) + "[1]"
+                element_dictionary = recursive_tree_traversal(child_elem, child_absolute_xpath, element_dictionary, max_depth, child_depth, max_siblings)
 
     return element_dictionary
 
